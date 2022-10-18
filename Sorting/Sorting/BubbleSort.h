@@ -7,10 +7,11 @@ class BubbleSort {
         if (iteration) {
             iteratorSort(nums);
         } else {
-            throw runtime_error("no RECURSIVE SORT has implemented");
             recursiveSort(nums);
         }
     }
+
+    private:
 
     /**
      * @brief Bubble sort through iteration
@@ -40,7 +41,25 @@ class BubbleSort {
         }
     }
 
-    static void recursiveSort(vector<int> &nums) {
-        
+    static void recursiveSort(vector<int> &nums, int i = 1) {
+        int t_index = nums.size() - 1;
+
+        if (i == t_index) return;
+
+        for (int j = t_index - 1 ; j >= i ; j--) {
+            int t = nums[t_index];
+            int c = nums[j];
+
+            if (t < c) {
+                // swap 
+                nums[t_index] = c;
+                nums[j] = t;
+                t_index = j;
+            } else {
+                t_index = j;
+            }
+        }
+
+        recursiveSort(nums, ++i);
     }
 };
