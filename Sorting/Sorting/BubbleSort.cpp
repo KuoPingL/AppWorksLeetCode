@@ -6,7 +6,7 @@ using namespace std;
 class BubbleSort {
     public:
     
-    void sort(vector<int> &nums, bool iteration) {
+    static void sort(vector<int> &nums, bool iteration) {
         if (iteration) {
             iteratorSort(nums);
         } else {
@@ -15,15 +15,13 @@ class BubbleSort {
         }
     }
 
-    private:
-
     /**
      * @brief Bubble sort through iteration
      * 
      * @param nums : input vector<int>
      * 
      */
-    void iteratorSort(vector<int> &nums) {
+    static void iteratorSort(vector<int> &nums) {
 
         int counter = 0;
 
@@ -50,7 +48,7 @@ class BubbleSort {
         }
     }
 
-    void recursiveSort(vector<int> &nums) {
+    static void recursiveSort(vector<int> &nums) {
         
     }
 };
@@ -60,8 +58,7 @@ int main(int argc, char const *argv[])
 {
     vector<int> nums = {5, 9, 3, 1, 2, 8, 4, 7, 6};//{9, 8, 7, 6, 5, 4, 3, 2, 1};
 
-    BubbleSort* sort = new BubbleSort();
-    sort->sort(nums, true);
+    BubbleSort::sort(nums, true);
 
 
     cout << '{';
