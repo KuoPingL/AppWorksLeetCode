@@ -9,6 +9,7 @@ class InsertionSort {
         
         if (iteration) {
             iterationSort(nums);
+            // alrightChiu(nums);
         } else {
             recursiveSort(nums);
         }
@@ -31,6 +32,19 @@ class InsertionSort {
         }
 
         recursiveSort(nums, index+1);
+    }
+
+    static void alrightChiu(vector<int>& nums) {
+        int size = nums.size();
+        for (int i = 1; i < size; i++) {
+            int key = nums[i];
+            int j = i - 1;
+            while (key < nums[j] && j >= 0) {
+                nums[j+1] = nums[j];
+                j--;
+            }
+            nums[j+1] = key;
+        }
     }
 
     static bool lessThan(int a, int b) {
