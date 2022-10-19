@@ -21,21 +21,34 @@ class BubbleSort {
      */
     static void iteratorSort(vector<int> &nums) {
 
+        // for (int i = 0 ; i < nums.size() - 1 ; i++) {
+
+        //     int t_index = nums.size() - 1;
+
+        //     for (int j = t_index - 1 ; j >= i ; j--) {
+        //         int t = nums[t_index];
+        //         int c = nums[j];
+
+        //         if (t < c) {
+        //             // swap 
+        //             nums[t_index] = c;
+        //             nums[j] = t;
+        //             t_index = j;
+        //         } else {
+        //             t_index = j;
+        //         }
+        //     }
+        // }
+
         for (int i = 0 ; i < nums.size() - 1 ; i++) {
 
-            int t_index = nums.size() - 1;
+            for (int j = nums.size() - 1 ; j > i ; j--) {
 
-            for (int j = t_index - 1 ; j >= i ; j--) {
-                int t = nums[t_index];
-                int c = nums[j];
-
-                if (t < c) {
+                if (nums[j] < nums[j-1]) {
                     // swap 
-                    nums[t_index] = c;
-                    nums[j] = t;
-                    t_index = j;
-                } else {
-                    t_index = j;
+                    int t = nums[j];
+                    nums[j] = nums[j-1];
+                    nums[j-1] = t;
                 }
             }
         }
