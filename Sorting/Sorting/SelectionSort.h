@@ -13,7 +13,7 @@ class SelectionSort {
 
     private:
     static void iterationSort(vector<int>& nums) {
-        for(int i = 0 ; i < nums.size() - 1 ; i++) {
+        for(int i = 0 ; i < nums.size() ; i++) {
             
             int min_index = i;
 
@@ -23,11 +23,11 @@ class SelectionSort {
                 }
             }
             
-            if (min_index != i) {
-                int min = nums[min_index];
-                nums[min_index] = nums[i];
-                nums[i] = min;
-            }
+            // if this can be done while going through the loop
+            // that would become bubble sort
+            int min = nums[min_index];
+            nums[min_index] = nums[i];
+            nums[i] = min;
         }
     }
 
@@ -42,11 +42,9 @@ class SelectionSort {
             }
         }
         
-        if (min_index != index) {
-            int min = nums[min_index];
-            nums[min_index] = nums[index];
-            nums[index] = min;
-        }
+        int min = nums[min_index];
+        nums[min_index] = nums[index];
+        nums[index] = min;
 
         recursiveSort(nums, ++index);
     }
