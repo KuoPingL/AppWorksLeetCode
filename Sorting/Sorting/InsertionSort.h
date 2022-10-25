@@ -19,19 +19,54 @@ class InsertionSort {
     static void iterationSort(vector<int>& nums) {
         
         for (int i = 1 ; i < nums.size() ; i++) {
-            for (int j = i; j > 0 && lessThan(nums[j], nums[j-1]); j--) {
-                swap(nums, j, j-1);
+            int t = nums[i];
+            int j = i;
+
+            while (j != 0) {
+                if (nums[j - 1] > t) {
+                    nums[j] = nums[j - 1];
+                    
+                } else {
+                    // break;
+                }
+                j--;
             }
+
+            nums[j] = t;
+
+            // for (int j = i ; j > 0 ; j--) {
+            //     if (nums[j - 1] > t) {
+            //         nums[j] = nums[j - 1];
+            //     } else {
+            //         nums[j] = t;
+            //         break;
+            //     }
+
+            //     if (j - 1 == 0) {
+            //         nums[j - 1] = t;
+            //         break; 
+            //     }
+            // }
         }
     }
 
-    static void recursiveSort(vector<int>& nums, int index = 1) {
-        if (index == nums.size()) return;
-        for (int j = index; j > 0 && lessThan(nums[j], nums[j-1]); j--) {
-            swap(nums, j, j-1);
+    static void recursiveSort(vector<int>& nums, int i = 1) {
+        if (i == nums.size()) return;
+        int t = nums[i];
+        int j = i;
+
+        while (j != 0) {
+            if (nums[j - 1] > t) {
+                nums[j] = nums[j - 1];
+                j--;
+            } else {
+                break;
+            }
         }
 
-        recursiveSort(nums, index+1);
+        nums[j] = t;
+
+        recursiveSort(nums, i+1);
     }
 
     static void alrightChiu(vector<int>& nums) {

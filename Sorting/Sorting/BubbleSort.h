@@ -5,7 +5,7 @@ class BubbleSort {
     public:
     static void sort(vector<int> &nums, bool iteration) {
         if (iteration) {
-            iteratorSort(nums);
+            iteratorSort_2(nums);
         } else {
             recursiveSort(nums);
         }
@@ -42,37 +42,56 @@ class BubbleSort {
 
         for (int i = 0 ; i < nums.size() - 1 ; i++) {
 
+            bool swapped = false;
+
             for (int j = nums.size() - 1 ; j > i ; j--) {
 
                 if (nums[j] < nums[j-1]) {
-                    // swap 
-                    int t = nums[j];
-                    nums[j] = nums[j-1];
-                    nums[j-1] = t;
+                    swapped = true;
+                    swap(nums, j, j-1);
                 }
             }
+
+            if (!swapped) break;
+        }
+    }
+
+    static void iteratorSort_2(vector<int> &nums) {
+        // improved
+        for (int i = nums.size() ; i > 0 ; i--) {
+            bool swapped = false;
+            for (int j = 0 ; j < i - 1 ; j++) {
+                if (nums[j] > nums[j+1]) {
+                    swapped = true;
+                    swap(nums, j+1, j);
+                }
+            }
+            if (!swapped) break;
         }
     }
 
     static void recursiveSort(vector<int> &nums, int i = 1) {
         int t_index = nums.size() - 1;
 
-        if (i == t_index) return;
+        if (i == nums.size() - 1) return;
 
-        for (int j = t_index - 1 ; j >= i ; j--) {
-            int t = nums[t_index];
-            int c = nums[j];
+        bool swapped = false;
 
-            if (t < c) {
-                // swap 
-                nums[t_index] = c;
-                nums[j] = t;
-                t_index = j;
-            } else {
-                t_index = j;
+        for (int j = nums.size() - 1 ; j > i ; j--) {
+            if (nums[j] < nums[j-1]) {
+                swapped = true;
+                swap(nums, j, j-1);
             }
         }
 
+        if (!swapped) return;
+
         recursiveSort(nums, ++i);
+    }
+
+    static void swap(vector<int>& nums, int indexA, int indexB) {
+        int a = nums[indexA];
+        nums[indexA] = nums[indexB];
+        nums[indexB] = a;
     }
 };
