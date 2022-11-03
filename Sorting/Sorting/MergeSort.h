@@ -13,7 +13,7 @@ class MergeSort {
     }
 
     private:
-    static const int debug = true;
+    static const int debug = false;
     static void sortIteratively(vector<int>& nums) {
 
         int step = 2;
