@@ -27,7 +27,7 @@ class InsertionSort {
                     nums[j] = nums[j - 1];
                     
                 } else {
-                    // break;
+                    break;
                 }
                 j--;
             }
@@ -47,6 +47,12 @@ class InsertionSort {
             //         break; 
             //     }
             // }
+
+            cout << '{';
+            for (auto k : nums) {
+                cout << k << ", ";
+            }
+            cout << "}\n";
         }
     }
 
